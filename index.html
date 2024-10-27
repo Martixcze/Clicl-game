@@ -20,22 +20,38 @@
             padding: 10px 20px;
             cursor: pointer;
         }
+        #level {
+            font-size: 24px;
+            margin: 20px;
+        }
     </style>
 </head>
 <body>
 
     <h1>Počítadlo bodů</h1>
     <div id="score">Skóre: 0</div>
+    <div id="level">Úroveň: Začátečník</div>
     <button onclick="addScore()">🌳 Přičíst bod</button>
 
     <script>
         let score = 0;
+        let pointsPerClick = 1; // Začíná se s 1 bodem za kliknutí
+        let level = "Začátečník";
 
         function addScore() {
-            score += 1;
+            score += pointsPerClick;
+
+            // Kontrola úrovně
+            if (score >= 50 && level === "Začátečník") {
+                level = "Pokročilý";
+                pointsPerClick = 2; // Po dosažení 50 bodů se zvyšuje počet bodů za kliknutí
+                document.getElementById('level').innerText = 'Úroveň: ' + level;
+            }
+
             document.getElementById('score').innerText = 'Skóre: ' + score;
         }
     </script>
 
 </body>
 </html>
+
