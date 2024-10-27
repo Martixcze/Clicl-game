@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Game</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        button { font-size: 20px; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Click Game</h1>
+    <p>Za každý klik získáte bod.</p>
+    <button onclick="incrementScore()">Klikni!</button>
+    <p>Skóre: <span id="score">0</span></p>
+
+    <script>
+        let score = 0;
+        function incrementScore() {
+            score++;
+            document.getElementById('score').innerText = score;
+        }
+    </script>
+</body>
+</html>
