@@ -1,26 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Click Game</title>
+    <title>Score Counter</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-        button { font-size: 20px; padding: 10px; }
+        body {
+            background-color: #d0e8d0; /* Zelené pozadí */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        #score {
+            font-size: 24px;
+            margin: 20px;
+        }
+        button {
+            font-size: 24px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <h1>Click Game</h1>
-    <p>Za každý klik získáte bod.</p>
-    <button onclick="incrementScore()">Klikni!</button>
-    <p>Skóre: <span id="score">0</span></p>
+
+    <h1>Počítadlo bodů</h1>
+    <div id="score">Skóre: 0</div>
+    <button onclick="addScore()">🌳 Přičíst bod</button>
 
     <script>
         let score = 0;
-        function incrementScore() {
-            score++;
-            document.getElementById('score').innerText = score;
+
+        function addScore() {
+            score += 1;
+            document.getElementById('score').innerText = 'Skóre: ' + score;
         }
     </script>
+
 </body>
 </html>
