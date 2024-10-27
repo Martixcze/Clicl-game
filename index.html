@@ -30,28 +30,38 @@
 
     <h1>Počítadlo bodů</h1>
     <div id="score">Skóre: 0</div>
-    <div id="level">Úroveň: Začátečník</div>
+    <div id="level">Úroveň: 1</div>
     <button onclick="addScore()">🌳 Přičíst bod</button>
 
     <script>
         let score = 0;
-        let pointsPerClick = 1; // Začíná se s 1 bodem za kliknutí
-        let level = "Začátečník";
+        let pointsPerClick = 1; // Počáteční body za kliknutí
+        let level = 1; // Počáteční úroveň
 
         function addScore() {
             score += pointsPerClick;
 
-            // Kontrola úrovně
-            if (score >= 50 && level === "Začátečník") {
-                level = "Pokročilý";
-                pointsPerClick = 2; // Po dosažení 50 bodů se zvyšuje počet bodů za kliknutí
-                document.getElementById('level').innerText = 'Úroveň: ' + level;
+            // Kontrola úrovně a zdvojnásobení bodů za kliknutí
+            if (score >= 400) {
+                level = 5;
+                pointsPerClick = 16; // 16 bodů za kliknutí
+            } else if (score >= 200) {
+                level = 4;
+                pointsPerClick = 8; // 8 bodů za kliknutí
+            } else if (score >= 100) {
+                level = 3;
+                pointsPerClick = 4; // 4 body za kliknutí
+            } else if (score >= 50) {
+                level = 2;
+                pointsPerClick = 2; // 2 body za kliknutí
+            } else {
+                level = 1; // 1 bod za kliknutí
             }
 
             document.getElementById('score').innerText = 'Skóre: ' + score;
+            document.getElementById('level').innerText = 'Úroveň: ' + level;
         }
     </script>
 
 </body>
 </html>
-
