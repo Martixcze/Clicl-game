@@ -20,7 +20,7 @@
             padding: 10px 20px;
             cursor: pointer;
             border: none; /* Odstraní standardní okraje tlačítka */
-            background-image: url('button-background.png'); /* Obrázek jako pozadí tlačítka */
+            background-image: url('button-background'); /* Obrázek jako pozadí tlačítka */
             background-size: cover; /* Upraví velikost obrázku, aby vyplnil tlačítko */
             color: white; /* Barva textu */
             border-radius: 10px; /* Zaoblení rohů tlačítka */
@@ -39,9 +39,19 @@
     <button onclick="addScore()">🌳 Přičíst bod</button>
 
     <script>
-        let score = 0;
+        // Načtení skóre a úrovně z Local Storage
+        let score = localStorage.getItem('score') ? parseInt(localStorage.getItem('score')) : 0;
         let pointsPerClick = 1; // Počáteční body za kliknutí
-        let level = 1; // Počáteční úroveň
+        let level = localStorage.getItem('level') ? parseInt(localStorage.getItem('level')) : 1; // Počáteční úroveň
+
+        // Funkce pro aktualizaci zobrazení skóre a úrovně
+        function updateDisplay() {
+            document.getElementById('score').innerText = 'Skóre: ' + score;
+            document.getElementById('level').innerText = 'Úroveň: ' + level;
+        }
+
+        // Zavolej funkci pro inicializaci
+        updateDisplay();
 
         function addScore() {
             score += pointsPerClick;
@@ -63,8 +73,11 @@
                 level = 1; // 1 bod za kliknutí
             }
 
-            document.getElementById('score').innerText = 'Skóre: ' + score;
-            document.getElementById('level').innerText = 'Úroveň: ' + level;
+            // Uložení nového skóre a úrovně do Local Storage
+            localStorage.setItem('score', score);
+            localStorage.setItem('level', level);
+
+            updateDisplay();
         }
     </script>
 
